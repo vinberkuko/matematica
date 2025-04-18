@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campinas - Conectividade Digital</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #27ae60;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--primary);
+            color: white;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .chart-container {
+            height: 400px;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 2rem 0;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background: #1a252f;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Campinas - Conectividade Digital</h1>
+            <p>Evolução da infraestrutura de internet (2015-2025)</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="index.html" class="back-btn">← Voltar para a página inicial</a>
+
+        <section class="grid">
+            <div class="card">
+                <h2>Internet Móvel: Tecnologia e Velocidade</h2>
+                <div class="chart-container">
+                    <canvas id="mobileTechChart"></canvas>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tecnologia</th>
+                            <th>2015</th>
+                            <th>2025</th>
+                            <th>Crescimento</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cobertura 4G</td>
+                            <td class="highlight">65%</td>
+                            <td class="highlight">98%</td>
+                            <td>+33%</td>
+                        </tr>
+                        <tr>
+                            <td>Implantação 5G</td>
+                            <td class="highlight">0%</td>
+                            <td class="highlight">75%</td>
+                            <td>Nova tecnologia</td>
+                        </tr>
+                        <tr>
+                            <td>Velocidade Média (Mbps)</td>
+                            <td class="highlight">8.2</td>
+                            <td class="highlight">42.5</td>
+                            <td>+418%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>Fibra Óptica na Cidade</h2>
+                <div class="chart-container">
+                    <canvas id="fiberChart"></canvas>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indicador</th>
+                            <th>2015</th>
+                            <th>2025</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Residências com Fibra</td>
+                            <td class="highlight">12%</td>
+                            <td class="highlight">68%</td>
+                        </tr>
+                        <tr>
+                            <td>Empresas com Fibra</td>
+                            <td class="highlight">28%</td>
+                            <td class="highlight">89%</td>
+                        </tr>
+                        <tr>
+                            <td>Km de Rede Instalada</td>
+                            <td class="highlight">320 km</td>
+                            <td class="highlight">1.450 km</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Comparativo Completo de Conectividade</h2>
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+            <p style="margin-top: 1rem;">* Dados de 2025 incluem projeções baseadas nos planos de expansão das operadoras</p>
+        </section>
+    </main>
+
+    <script>
+        // Gráfico de Tecnologia Móvel
+        new Chart(document.getElementById('mobileTechChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Cobertura 4G', 'Implantaçao 5G', 'Velocidade Média (Mbps)'],
+                datasets: [{
+                    label: '2015',
+                    data: [65, 0, 8.2],
+                    backgroundColor: '#3498db',
+                    borderColor: '#2980b9',
+                    borderWidth: 1
+                }, {
+                    label: '2025',
+                    data: [98, 75, 42.5],
+                    backgroundColor: '#27ae60',
+                    borderColor: '#219653',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Fibra Óptica
+        new Chart(document.getElementById('fiberChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Residências', 'Empresas', 'Km de Rede'],
+                datasets: [{
+                    label: '2015',
+                    data: [12, 28, 40],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498db',
+                    pointBackgroundColor: '#3498db',
+                    pointRadius: 5
+                }, {
+                    label: '2025',
+                    data: [68, 89, 90],
+                    backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                    borderColor: '#27ae60',
+                    pointBackgroundColor: '#27ae60',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0,
+                        suggestedMax: 100
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Comparação Completa
+        new Chart(document.getElementById('comparisonChart'), {
+            type: 'line',
+            data: {
+                labels: ['2015', '2017', '2019', '2021', '2023', '2025'],
+                datasets: [{
+                    label: 'Cobertura 4G+ (%)',
+                    data: [65, 75, 85, 92, 96, 98],
+                    borderColor: '#3498db',
+                    backgroundColor: 'transparent',
+                    tension: 0.3
+                }, {
+                    label: 'Cobertura 5G (%)',
+                    data: [0, 0, 5, 15, 45, 75],
+                    borderColor: '#9b59b6',
+                    backgroundColor: 'transparent',
+                    tension: 0.3
+                }, {
+                    label: 'Fibra Residencial (%)',
+                    data: [12, 18, 28, 42, 55, 68],
+                    borderColor: '#e74c3c',
+                    backgroundColor: 'transparent',
+                    tension: 0.3
+                }, {
+                    label: 'Velocidade Média (Mbps)',
+                    data: [8.2, 12.5, 18.3, 25.7, 34.2, 42.5],
+                    borderColor: '#f39c12',
+                    backgroundColor: 'transparent',
+                    tension: 0.3,
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Percentual de Cobertura'
+                        }
+                    },
+                    y1: {
+                        position: 'right',
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Velocidade (Mbps)'
+                        },
+                        grid: {
+                            drawOnChartArea: false
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

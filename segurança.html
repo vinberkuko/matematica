@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campinas - Tecnologia na Segurança Pública</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--primary);
+            color: white;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .chart-container {
+            height: 400px;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 2rem 0;
+            padding: 0.8rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .tech-feature {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .tech-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Tecnologia na Segurança Pública</h1>
+            <p>Campinas 2015 vs 2025 - Evolução dos sistemas tecnológicos</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <a href="index.html" class="back-btn">← Voltar para a página inicial</a>
+
+        <section class="card">
+            <h2>Monitoramento Inteligente</h2>
+            <div class="chart-container">
+                <canvas id="monitoringChart"></canvas>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tecnologia</th>
+                        <th>2015</th>
+                        <th>2025</th>
+                        <th>Evolução</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Câmeras de vigilância</td>
+                        <td class="highlight">420</td>
+                        <td class="highlight">1.850</td>
+                        <td>+340%</td>
+                    </tr>
+                    <tr>
+                        <td>Câmeras com IA</td>
+                        <td class="highlight">0</td>
+                        <td class="highlight">620</td>
+                        <td>Nova tecnologia</td>
+                    </tr>
+                    <tr>
+                        <td>Centrais de monitoramento</td>
+                        <td class="highlight">2</td>
+                        <td class="highlight">5</td>
+                        <td>+150%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="grid">
+            <div class="card">
+                <h2>Reconhecimento Facial</h2>
+                <div class="chart-container">
+                    <canvas id="facialRecognitionChart"></canvas>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Indicador</th>
+                            <th>2015</th>
+                            <th>2025</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sistemas implantados</td>
+                            <td class="highlight">0</td>
+                            <td class="highlight">48</td>
+                        </tr>
+                        <tr>
+                            <td>Pessoas identificadas</td>
+                            <td class="highlight">-</td>
+                            <td class="highlight">12.500/ano</td>
+                        </tr>
+                        <tr>
+                            <td>Precisão do sistema</td>
+                            <td class="highlight">-</td>
+                            <td class="highlight">98,7%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>Banco de Dados Forense</h2>
+                <div class="chart-container">
+                    <canvas id="forensicChart"></canvas>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Recurso</th>
+                            <th>2015</th>
+                            <th>2025</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Digitais armazenadas</td>
+                            <td class="highlight">85.000</td>
+                            <td class="highlight">420.000</td>
+                        </tr>
+                        <tr>
+                            <td>DNA catalogado</td>
+                            <td class="highlight">2.400</td>
+                            <td class="highlight">18.500</td>
+                        </tr>
+                        <tr>
+                            <td>Tempo de análise</td>
+                            <td class="highlight">14 dias</td>
+                            <td class="highlight">36 horas</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Tecnologias Implementadas</h2>
+            <div class="grid">
+                <div class="tech-feature">
+                    <div class="tech-icon">📹</div>
+                    <div>
+                        <h3>Videomonitoramento Inteligente</h3>
+                        <p>620 câmeras com análise automática de comportamento suspeito</p>
+                    </div>
+                </div>
+                
+                <div class="tech-feature">
+                    <div class="tech-icon">🤖</div>
+                    <div>
+                        <h3>Patrulhas Robóticas</h3>
+                        <p>28 unidades autônomas em áreas estratégicas</p>
+                    </div>
+                </div>
+                
+                <div class="tech-feature">
+                    <div class="tech-icon">🔍</div>
+                    <div>
+                        <h3>Banco de Dados Integrado</h3>
+                        <p>Sistema unificado com 18 bancos de dados forenses</p>
+                    </div>
+                </div>
+                
+                <div class="tech-feature">
+                    <div class="tech-icon">🚨</div>
+                    <div>
+                        <h3>Botão de Pânico Inteligente</h3>
+                        <p>180 dispositivos em pontos estratégicos da cidade</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Impacto da Tecnologia na Segurança</h2>
+            <div class="chart-container">
+                <canvas id="impactChart"></canvas>
+            </div>
+            <p style="margin-top: 1rem;">* Dados de 2025 representam projeções baseadas nos investimentos atuais</p>
+        </section>
+    </main>
+
+    <script>
+    // Gráfico de Monitoramento
+    new Chart(document.getElementById('monitoringChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Câmeras Totais', 'Câmeras com IA', 'Centrais'],
+            datasets: [{
+                label: '2015',
+                data: [420, 0, 2],
+                backgroundColor: '#3498db'
+            }, {
+                label: '2025',
+                data: [1850, 620, 5],
+                backgroundColor: '#e74c3c'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Gráfico de Reconhecimento Facial
+    new Chart(document.getElementById('facialRecognitionChart'), {
+        type: 'doughnut',
+        data: {
+            labels: ['Pontos com tecnologia', 'Restante da frota'],
+            datasets: [{
+                data: [48, 1802],
+                backgroundColor: [
+                    '#e74c3c',
+                    '#3498db'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Câmeras com Reconhecimento Facial (2025)'
+                }
+            }
+        }
+    });
+
+    // Gráfico Forense
+    new Chart(document.getElementById('forensicChart'), {
+        type: 'line',
+        data: {
+            labels: ['2015', '2017', '2019', '2021', '2023', '2025'],
+            datasets: [{
+                label: 'Digitais Armazenadas (milhares)',
+                data: [85, 120, 180, 250, 350, 420],
+                borderColor: '#e74c3c',
+                tension: 0.3
+            }, {
+                label: 'Amostras de DNA (milhares)',
+                data: [2.4, 4.1, 6.8, 10.5, 14.7, 18.5],
+                borderColor: '#3498db',
+                tension: 0.3
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false
+        }
+    });
+
+    // Gráfico de Impacto
+    new Chart(document.getElementById('impactChart'), {
+        type: 'radar',
+        data: {
+            labels: ['Resolução de Crimes', 'Tempo Resposta', 'Prevenção', 'Identificação', 'Dados Forenses'],
+            datasets: [{
+                label: '2015',
+                data: [45, 30, 50, 25, 40],
+                backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                borderColor: '#3498db'
+            }, {
+                label: '2025',
+                data: [82, 75, 88, 90, 85],
+                backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                borderColor: '#e74c3c'
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                r: {
+                    angleLines: {
+                        display: true
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 100
+                }
+            }
+        }
+    });
+</script>
+
+<footer style="text-align: center; padding: 2rem; background: #2c3e50; color: white; margin-top: 3rem;">
+    <div class="container">
+        <p>Secretaria de Segurança Pública de Campinas © 2025</p>
+        <p>Relatório de Tecnologia Aplicada à Segurança</p>
+    </div>
+</footer>
+</body>
+</html>

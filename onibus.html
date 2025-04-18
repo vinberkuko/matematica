@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campinas - Frota de Ônibus Comparativo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #27ae60;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .header {
+            text-align: center;
+            padding: 4rem 0;
+            background: var(--primary);
+            color: white;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .chart-container {
+            height: 400px;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .chart-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1>Campinas - Frota de Ônibus Comparativo</h1>
+            <p>Evolução da frota entre 2015 e 2025</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="grid">
+            <div class="card">
+                <h2>Frota Total de Ônibus</h2>
+                <div class="chart-container">
+                    <canvas id="totalFleetChart"></canvas>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ano</th>
+                            <th>Quantidade</th>
+                            <th>Variação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2015</td>
+                            <td class="highlight">768</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>2025</td>
+                            <td class="highlight">1.010</td>
+                            <td>+31,5%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h2>Ônibus com Tecnologia Avançada</h2>
+                <div class="chart-container">
+                    <canvas id="techFleetChart"></canvas>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Tecnologia</th>
+                            <th>2015</th>
+                            <th>2025</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ar-condicionado e USB</td>
+                            <td class="highlight">0</td>
+                            <td class="highlight">50</td>
+                        </tr>
+                        <tr>
+                            <td>Elétricos</td>
+                            <td class="highlight">12</td>
+                            <td class="highlight">60 (previstos)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>Comparativo Detalhado</h2>
+            <div class="chart-container">
+                <canvas id="comparisonChart"></canvas>
+            </div>
+            <p style="margin-top: 1rem;">* Dados de 2025 incluem projeções da nova licitação em andamento</p>
+        </section>
+    </main>
+
+    <script>
+        // Gráfico da Frota Total
+        new Chart(document.getElementById('totalFleetChart'), {
+            type: 'bar',
+            data: {
+                labels: ['2015', '2025'],
+                datasets: [{
+                    label: 'Frota Total de Ônibus',
+                    data: [768, 1010],
+                    backgroundColor: ['#3498db', '#2c3e50'],
+                    borderColor: ['#2980b9', '#1a252f'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Tecnologia Avançada
+        new Chart(document.getElementById('techFleetChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Ar-condicionado e USB', 'Elétricos'],
+                datasets: [{
+                    label: '2015',
+                    data: [0, 12],
+                    backgroundColor: '#3498db'
+                }, {
+                    label: '2025',
+                    data: [50, 60],
+                    backgroundColor: '#27ae60'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Gráfico de Comparação Completa
+        new Chart(document.getElementById('comparisonChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Frota Total', 'Ar-condicionado/USB', 'Elétricos'],
+                datasets: [{
+                    label: '2015',
+                    data: [768, 0, 12],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498db',
+                    pointBackgroundColor: '#3498db'
+                }, {
+                    label: '2025',
+                    data: [1010, 50, 60],
+                    backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                    borderColor: '#27ae60',
+                    pointBackgroundColor: '#27ae60'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            display: true
+                        },
+                        suggestedMin: 0
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campinas - Cidade Inteligente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #27ae60;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a252f 100%);
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-bottom: 4px solid var(--accent);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .intro-text {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .intro-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .nav-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .nav-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .nav-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .nav-card-content {
+            padding: 1.5rem;
+        }
+
+        .nav-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .nav-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--secondary);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            background: var(--primary);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nav-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Campinas - Cidade Inteligente</h1>
+            <p class="subtitle">Tecnologia e inovação a serviço do cidadão</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="intro-text">
+            <h2>Tecnologia Pública em Campinas</h2>
+            <p>Campinas consolida-se como uma das cidades mais inovadoras do Brasil, implementando soluções tecnológicas que melhoram a qualidade de vida dos cidadãos em diversas áreas.</p>
+            
+            <p>Na mobilidade urbana, a cidade está modernizando toda a frota de ônibus com veículos elétricos e equipados com tecnologia de ponta. Na conectividade, expandiram a rede de wi-fi público e implementaram soluções de Internet das Coisas (IoT) para monitoramento urbano.</p>
+            
+            <p>A segurança pública também foi transformada com câmeras inteligentes, sistemas de reconhecimento facial e central de monitoramento integrada. Essas iniciativas colocam Campinas no mapa das cidades inteligentes globais.</p>
+        </section>
+
+        <section class="nav-cards">
+            <div class="nav-card">
+                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Transporte Público">
+                <div class="nav-card-content">
+                    <h3>Transporte Inteligente</h3>
+                    <p>Conheça a frota moderna de ônibus, sistemas de monitoramento em tempo real e projetos de mobilidade urbana sustentável.</p>
+                    <a href="onibus.html" class="btn">Ver Dados</a>
+                </div>
+            </div>
+
+            <div class="nav-card">
+                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Conectividade">
+                <div class="nav-card-content">
+                    <h3>Conectividade Digital</h3>
+                    <p>Explore a infraestrutura de internet pública, cobertura 5G e projetos de inclusão digital na cidade.</p>
+                    <a href="net.html" class="btn">Ver Dados</a>
+                </div>
+            </div>
+
+            <div class="nav-card">
+                <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Segurança">
+                <div class="nav-card-content">
+                    <h3>Segurança Tecnológica</h3>
+                    <p>Conheça os sistemas inteligentes de vigilância, monitoramento e resposta rápida que tornam Campinas mais segura.</p>
+                    <a href="segurança.html" class="btn">Ver Dados</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Grupo do Samuel Ienne Manoel, Pedro Henrique Kubitchza e Mateus Iuri Rocha © 2025 - Todos os direitos reservados</p>
+            <p>Dados atualizados em junho de 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
